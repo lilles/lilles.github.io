@@ -1,0 +1,427 @@
+<!doctype html><html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>CSS Basic User Interface Module Level 4</title>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="revising" name="csswg-work-status">
+  <meta content="ED" name="w3c-status">
+  <meta content="This specification describes user interface related            properties and values to style HTML and XML (including XHTML).            It includes and extends user interface related features            from the properties and values of previous CSS levels.            It uses various properties and values            to style basic user interface elements in a document." name="abstract">
+  <base href="https://drafts.csswg.org/css-ui-4/">
+  <link href="../default.css" rel="stylesheet" type="text/css">
+  <link href="../csslogo.ico" rel="shortcut icon" type="image/x-icon">
+<style>
+  body {
+    background: url("https://www.w3.org/StyleSheets/TR/logo-ED") top left no-repeat;
+  }
+  </style>
+  <meta content="Bikeshed version 26f19cfb647ccdfdcf6a1f81893cb428836da342" name="generator">
+  <link href="https://www.w3.org/TR/css-ui-4/" rel="canonical">
+<script defer src="https://test.csswg.org/harness/annotate.js#!css-ui-4_dev/css-ui-4" type="text/javascript"></script>
+<style>
+.awesome-table td {padding:5px}
+.awesome-table {color:#000;background:#fff;margin: auto;}
+</style>
+<style>
+#cursors dfn { cursor: inherit }
+</style>
+<style>
+	@keyframes caret-bar-ref { 50% { border-color: transparent; } }
+	@keyframes caret-block-ref { 50% { background: transparent; } }
+	@keyframes caret-underscore-ref { 50% { border-color: transparent; } }
+	#caret-shape-example {
+		min-width: 25em;
+	}
+	#caret-shape-example,
+	#caret-shape-example td,
+	#caret-shape-example th {
+		border: solid 1px;
+	}
+	#caret-shape-example td+td {
+		background:white;
+	}
+	</style>
+<style>
+	@keyframes terminal-caret-ref { 50% { border-color: transparent; } }
+	</style>
+<style>/* style-md-lists */
+
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}</style>
+<style>/* style-selflinks */
+
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: gray;
+    color: white;
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: black;
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }</style>
+<style>/* style-caniuse-panel */
+
+            .caniuse-status { font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; top: auto; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; border-collapse: initial; border-spacing: initial; }
+            .caniuse-status.wrapped { width: 1em; height: 1em; }
+            .caniuse-status.wrapped > :not(input) { display: none; }
+            .caniuse-status > input { position: absolute; right: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+            .caniuse-status > p { font-size: 0.6em; margin: 0; padding: 0; }
+            .caniuse-status > p + p { padding-top: 0.5em; }
+            .caniuse-status > .support { display: block; }
+            .caniuse-status > .support > span { padding: 0.2em 0; display: block; display: table; }
+            .caniuse-status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+            .caniuse-status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+            .canisue-status > .support > span.no::before { opacity: 0.5; }
+            .caniuse-status > .support > span:first-of-type { padding-top: 0.5em; }
+            .caniuse-status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+            .caniuse-status > .support > span > span:first-child { width: 100%; }
+            .caniuse-status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+            .caniuse-status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+            .caniuse-status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+            .caniuse-status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+            .caniuse-status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+            .caniuse-status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+            .caniuse-status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+            .caniuse-status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+            .caniuse-status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+            .caniuse-status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+            .caniuse-status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+            .caniuse-status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+            .caniuse-status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+            .caniuse-status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+            .caniuse-status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+            .caniuse-status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+            .caniuse-status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+            .caniuse-status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+            .caniuse-status > .caniuse { text-align: right; font-style: italic; }
+            @media (max-width: 767px) {
+                .caniuse-status.wrapped { width: 9em; height: auto; }
+                .caniuse-status:not(.wrapped) { width: 1em; height: 1em; }
+                .caniuse-status.wrapped > :not(input) { display: block; }
+                .caniuse-status:not(.wrapped) > :not(input) { display: none; }
+            }</style>
+<style>/* style-counters */
+
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}</style>
+<style>/* style-autolinks */
+
+.css.css, .property.property, .descriptor.descriptor {
+    color: #005a9c;
+    font-size: inherit;
+    font-family: inherit;
+}
+.css::before, .property::before, .descriptor::before {
+    content: "‘";
+}
+.css::after, .property::after, .descriptor::after {
+    content: "’";
+}
+.property, .descriptor {
+    /* Don't wrap property and descriptor names */
+    white-space: nowrap;
+}
+.type { /* CSS value <type> */
+    font-style: italic;
+}
+pre .property::before, pre .property::after {
+    content: "";
+}
+[data-link-type="property"]::before,
+[data-link-type="propdesc"]::before,
+[data-link-type="descriptor"]::before,
+[data-link-type="value"]::before,
+[data-link-type="function"]::before,
+[data-link-type="at-rule"]::before,
+[data-link-type="selector"]::before,
+[data-link-type="maybe"]::before {
+    content: "‘";
+}
+[data-link-type="property"]::after,
+[data-link-type="propdesc"]::after,
+[data-link-type="descriptor"]::after,
+[data-link-type="value"]::after,
+[data-link-type="function"]::after,
+[data-link-type="at-rule"]::after,
+[data-link-type="selector"]::after,
+[data-link-type="maybe"]::after {
+    content: "’";
+}
+
+[data-link-type].production::before,
+[data-link-type].production::after,
+.prod [data-link-type]::before,
+.prod [data-link-type]::after {
+    content: "";
+}
+
+[data-link-type=element],
+[data-link-type=element-attr] {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .9em;
+}
+[data-link-type=element]::before { content: "<" }
+[data-link-type=element]::after  { content: ">" }
+
+[data-link-type=biblio] {
+    white-space: pre;
+}</style>
+<style>/* style-dfn-panel */
+
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    height: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 300px;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: #DDDDDD;
+    color: black;
+    border: outset 0.2em;
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: black; }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0; }
+.dfn-panel li { list-style: inside; }
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled { cursor: pointer; }
+</style>
+<style>/* style-syntax-highlighting */
+
+.highlight:not(.idl) { background: hsl(24, 20%, 95%); }
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+</style>
+ <body class="h-entry">
+   <h2 class="heading settled" data-level="8" id="color-schemes"><span class="secno">8. </span><span class="content">UA rendering based on color schemes</span><a class="self-link" href="#color-schemes"></a></h2>
+   <p>A user agent may provide a user preferred color scheme which is the result of the user
+selecting that scheme within the user agent itself, or based on the color scheme selected
+the UAs environment like an operating system. This preferred scheme is used to evaluate the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme" id="ref-for-descdef-media-prefers-color-scheme">prefers-color-scheme</a> media feature. This specification introduces a <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes">supported-color-schemes</a> property to affect UA specific rendering on a per element basis.</p>
+   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme" id="ref-for-descdef-media-prefers-color-scheme①">prefers-color-scheme</a> media query is not affected by the used color scheme as that would
+have introduced a circular dependency. Similarly, the used scheme does not result in a different
+UA stylesheet, but the other computed or used values may.</p>
+   <p>This specification does not deal with how the UA decides on the preferred color scheme.</p>
+   <h3 class="heading settled" data-level="8.1" id="supported-color-schemes"><span class="secno">8.1. </span><span class="content">Switching color schemes: the <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes①">supported-color-schemes</a> property</span><a class="self-link" href="#supported-color-schemes"></a></h3>
+   <table class="def propdef" data-link-for-hint="supported-color-schemes">
+    <tbody>
+     <tr>
+      <th>Name:
+      <td><dfn class="dfn-paneled css" data-dfn-type="property" data-export id="propdef-supported-color-schemes">supported-color-schemes</dfn>
+     <tr class="value">
+      <th><a href="https://drafts.csswg.org/css-values/#value-defs">Value:</a>
+      <td class="prod"><a class="production css" data-link-type="type">&lt;color-scheme></a><a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#mult-zero-plus" id="ref-for-mult-zero-plus①">*</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑦">|</a> only<a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#mult-opt" id="ref-for-mult-opt②">?</a>
+     <tr>
+      <th><a href="https://drafts.csswg.org/css-cascade/#initial-values">Initial:</a>
+      <td>light
+     <tr>
+      <th>Applies to:
+      <td><a href="https://drafts.csswg.org/css-pseudo/#generated-content" title="Includes ::before and ::after pseudo-elements.">all elements</a>
+     <tr>
+      <th><a href="https://drafts.csswg.org/css-cascade/#inherited-property">Inherited:</a>
+      <td>yes
+     <tr>
+      <th><a href="https://drafts.csswg.org/css-values/#percentages">Percentages:</a>
+      <td>N/A
+     <tr>
+      <th><a href="https://drafts.csswg.org/css-cascade/#computed">Computed value:</a>
+      <td>see prose
+     <tr>
+      <th>Canonical order:
+      <td>per grammar
+     <tr>
+      <th><a href="https://drafts.csswg.org/web-animations/#animation-type">Animation type:</a>
+      <td>not animatable
+   </table>
+   <p>If the specified value only contains unsupported color schemes, the computed value is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light">light</a>.
+Otherwise, the computed value is the specified value with unsupported and duplicate color schemes removed.</p>
+   <p class="note" role="note"><span>Note:</span> The rationale behind specifying computed and used style (below) like this is to have to store
+as little as possible (bitset of supported schemes) while not having to recreate computed
+styles on preferred color scheme changes.</p>
+   <dl>
+    <dt><a class="production css" data-link-type="type">&lt;color-scheme></a>
+    <dd>
+<pre class="prod"><dfn data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="color-scheme-value">&lt;color-scheme><a class="self-link" href="#color-scheme-value"></a></dfn> = <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light①">light</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑧">|</a> <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-dark" id="ref-for-valdef-supported-color-schemes-dark">dark</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑨">|</a> <a class="production" data-link-type="type" href="https://drafts.csswg.org/css-values-4/#identifier-value" id="ref-for-identifier-value">&lt;custom-ident></a></pre>
+     <dl>
+      <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-light">light</dfn>
+      <dd>The element supports rendering with a light theme. 
+      <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-dark">dark</dfn>
+      <dd>The element supports rendering with a dark theme. 
+      <dt><a class="production css" data-link-type="type" href="https://drafts.csswg.org/css-values-4/#identifier-value" id="ref-for-identifier-value①">&lt;custom-ident></a>
+      <dd> Other color scheme names are allowed to be forward compatible with color schemes added later without
+				dropping the declaration in UAs not supporting those themes. 
+     </dl>
+    <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-only">only</dfn> 
+    <dd>
+      Ask the UA to use one of the listed color schemes when the UA preferred color scheme is not listed
+		in the supported color schemes. This can typically be used force a dark theme rendering when the preferred
+		color scheme is light. 
+     <div class="example" id="example-db3ea83b">
+      <a class="self-link" href="#example-db3ea83b"></a> Force dark theming: 
+<pre><code class="lang-css highlight"><c- f>:root </c-><c- p>{</c->
+  <c- k>supported-color-schemes</c-><c- p>:</c-> dark only<c- p>;</c->
+<c- p>}</c->
+</code></pre>
+     </div>
+   </dl>
+   <h3 class="heading settled" data-level="8.2" id="resolving-the-used-color-scheme"><span class="secno">8.2. </span><span class="content">Resolving the used color scheme</span><a class="self-link" href="#resolving-the-used-color-scheme"></a></h3>
+   <p>The UA provides a preferred color scheme which is used to evaluate the <span class="css">prefers-color-scheme</span> media feature. For the following, a preferred color scheme of <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/mediaqueries-5/#valdef-media-prefers-color-scheme-no-preference" id="ref-for-valdef-media-prefers-color-scheme-no-preference">no-preference</a> maps to <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light②">light</a>. The preferred color scheme is used to resolve to a used color scheme per element
+as follows:</p>
+   <ol>
+    <li> If the computed value of <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes②">supported-color-schemes</a> contains the preferred color
+		scheme, make that the used color scheme. 
+    <li>
+      If the computed value of <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes③">supported-color-schemes</a> contains the <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-only" id="ref-for-valdef-supported-color-schemes-only">only</a> keyword,
+		pick one of the <span class="property" id="ref-for-propdef-supported-color-schemes④">supported-color-schemes</span> as the used color scheme. 
+     <p class="issue" id="issue-887a09c4"><a class="self-link" href="#issue-887a09c4"></a> Does it make sense to allow multiple color schemes before <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-only" id="ref-for-valdef-supported-color-schemes-only①">only</a>?</p>
+    <li> Otherwise the used color scheme is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light③">light</a>. 
+   </ol>
+   <h3 class="heading settled" data-level="8.3" id="rendering-effects"><span class="secno">8.3. </span><span class="content">Rendering effects</span><a class="self-link" href="#rendering-effects"></a></h3>
+   <p>The UA should take the chosen color scheme into account when rendering the default
+page background, form controls, the default selection color, and other UA-controlled
+UI like misspelling underlines.</p>
+   <p>When the canvas background is not opaque, a <a href="https://drafts.csswg.org/css-backgrounds/#special-backgrounds">UA dependent background</a> is seen behind the canvas. This background should be dark instead of light when the used color
+scheme for the root element of the top level document is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-dark" id="ref-for-valdef-supported-color-schemes-dark①">dark</a>.</p>
+   <p class="issue" id="issue-1d23e8a5"><a class="self-link" href="#issue-1d23e8a5"></a> Should the spec say white/black instead of light/dark? Probably not since this is defined as
+UA dependent?</p>
+   <p class="note" role="note"><span>Note:</span> The background color of the canvas is typically <a class="property" data-link-type="propdesc">transparent</a>. Changing the UA background
+behind the canvas allows for iframes to still be <span class="property">transparent</span> by default when both the parent
+document and the iframe uses a dark theme.</p>
+   <p>The UA stylesheet should include a named color, not exposed to authors, specified on :root. This
+named color computes to the same computed value as the initial value of <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#valdef-type-or-value-color" id="ref-for-valdef-type-or-value-color">color</a> when the resolved
+theme for the element is light, and <code>rgb(255, 255, 255)</code> for dark.</p>
+   <p class="issue" id="issue-db49e619"><a class="self-link" href="#issue-db49e619"></a> Making the computed value of a color relying on the used color theme could be an issue.</p>
+
