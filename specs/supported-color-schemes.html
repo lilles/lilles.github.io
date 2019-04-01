@@ -327,101 +327,100 @@ c-[vi] { color: #0077aa } /* Name.Variable.Instance */
 c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
  <body class="h-entry">
-   <h2 class="heading settled" data-level="8" id="color-schemes"><span class="secno">8. </span><span class="content">UA rendering based on color schemes</span><a class="self-link" href="#color-schemes"></a></h2>
-   <p>A user agent may provide a user preferred color scheme which is the result of the user
-selecting that scheme within the user agent itself, or based on the color scheme selected
-the UAs environment like an operating system. This preferred scheme is used to evaluate the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme" id="ref-for-descdef-media-prefers-color-scheme">prefers-color-scheme</a> media feature. This specification introduces a <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes">supported-color-schemes</a> property to affect UA specific rendering on a per element basis.</p>
-   <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme" id="ref-for-descdef-media-prefers-color-scheme①">prefers-color-scheme</a> media query is not affected by the used color scheme as that would
-have introduced a circular dependency. Similarly, the used scheme does not result in a different
-UA stylesheet, but the other computed or used values may.</p>
-   <p>This specification does not deal with how the UA decides on the preferred color scheme.</p>
-   <h3 class="heading settled" data-level="8.1" id="supported-color-schemes"><span class="secno">8.1. </span><span class="content">Switching color schemes: the <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes①">supported-color-schemes</a> property</span><a class="self-link" href="#supported-color-schemes"></a></h3>
-   <table class="def propdef" data-link-for-hint="supported-color-schemes">
-    <tbody>
-     <tr>
-      <th>Name:
-      <td><dfn class="dfn-paneled css" data-dfn-type="property" data-export id="propdef-supported-color-schemes">supported-color-schemes</dfn>
-     <tr class="value">
-      <th><a href="https://drafts.csswg.org/css-values/#value-defs">Value:</a>
-      <td class="prod"><a class="production css" data-link-type="type">&lt;color-scheme></a><a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#mult-one-plus" id="ref-for-mult-one-plus">+</a> only<a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#mult-opt" id="ref-for-mult-opt②">?</a>
-     <tr>
-      <th><a href="https://drafts.csswg.org/css-cascade/#initial-values">Initial:</a>
-      <td>light
-     <tr>
-      <th>Applies to:
-      <td><a href="https://drafts.csswg.org/css-pseudo/#generated-content" title="Includes ::before and ::after pseudo-elements.">all elements</a>
-     <tr>
-      <th><a href="https://drafts.csswg.org/css-cascade/#inherited-property">Inherited:</a>
-      <td>yes
-     <tr>
-      <th><a href="https://drafts.csswg.org/css-values/#percentages">Percentages:</a>
-      <td>N/A
-     <tr>
-      <th><a href="https://drafts.csswg.org/css-cascade/#computed">Computed value:</a>
-      <td>see prose
-     <tr>
-      <th>Canonical order:
-      <td>per grammar
-     <tr>
-      <th><a href="https://drafts.csswg.org/web-animations/#animation-type">Animation type:</a>
-      <td>not animatable
-   </table>
-   <p>If the specified value only contains unsupported color schemes, the computed value is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light">light</a>.
-Otherwise, the computed value is the specified value with unsupported and duplicate color schemes removed.</p>
-   <p class="note" role="note"><span>Note:</span> The rationale behind specifying computed and used style (below) like this is to have to store
-as little as possible (bitset of supported schemes) while not having to recreate computed
-styles on preferred color scheme changes.</p>
-   <dl>
-    <dt><a class="production css" data-link-type="type">&lt;color-scheme></a>
-    <dd>
-<pre class="prod"><dfn data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="color-scheme-value">&lt;color-scheme><a class="self-link" href="#color-scheme-value"></a></dfn> = <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light①">light</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑧">|</a> <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-dark" id="ref-for-valdef-supported-color-schemes-dark">dark</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑨">|</a> <a class="production" data-link-type="type" href="https://drafts.csswg.org/css-values-4/#identifier-value" id="ref-for-identifier-value">&lt;custom-ident></a></pre>
-     <dl>
-      <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-light">light</dfn>
-      <dd>The element supports rendering with a light theme. 
-      <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-dark">dark</dfn>
-      <dd>The element supports rendering with a dark theme. 
-      <dt><a class="production css" data-link-type="type" href="https://drafts.csswg.org/css-values-4/#identifier-value" id="ref-for-identifier-value①">&lt;custom-ident></a>
-      <dd> Other color scheme names are allowed to be forward compatible with color schemes added later without
-				dropping the declaration in UAs not supporting those themes. 
-     </dl>
-    <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-only">only</dfn> 
-    <dd>
-      Ask the UA to use one of the listed color schemes when the UA preferred color scheme is not listed
-		in the supported color schemes. This can typically be used force a dark theme rendering when the preferred
-		color scheme is light. 
-     <div class="example" id="example-db3ea83b">
-      <a class="self-link" href="#example-db3ea83b"></a> Force dark theming: 
-<pre><code class="lang-css highlight"><c- f>:root </c-><c- p>{</c->
-  <c- k>supported-color-schemes</c-><c- p>:</c-> dark only<c- p>;</c->
-<c- p>}</c->
-</code></pre>
-     </div>
-   </dl>
-   <h3 class="heading settled" data-level="8.2" id="resolving-the-used-color-scheme"><span class="secno">8.2. </span><span class="content">Resolving the used color scheme</span><a class="self-link" href="#resolving-the-used-color-scheme"></a></h3>
-   <p>The UA provides a preferred color scheme which is used to evaluate the <span class="css">prefers-color-scheme</span> media feature. For the following, a preferred color scheme of <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/mediaqueries-5/#valdef-media-prefers-color-scheme-no-preference" id="ref-for-valdef-media-prefers-color-scheme-no-preference">no-preference</a> maps to <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light②">light</a>. The preferred color scheme is used to resolve to a used color scheme per element
-as follows:</p>
-   <ol>
-    <li> If the computed value of <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes②">supported-color-schemes</a> contains the preferred color
-		scheme, make that the used color scheme. 
-    <li>
-      If the computed value of <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes③">supported-color-schemes</a> contains the <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-only" id="ref-for-valdef-supported-color-schemes-only">only</a> keyword,
-		pick one of the <span class="property" id="ref-for-propdef-supported-color-schemes④">supported-color-schemes</span> as the used color scheme. 
-     <p class="issue" id="issue-887a09c4"><a class="self-link" href="#issue-887a09c4"></a> Does it make sense to allow multiple color schemes before <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-only" id="ref-for-valdef-supported-color-schemes-only①">only</a>?</p>
-    <li> Otherwise the used color scheme is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light③">light</a>. 
-   </ol>
-   <h3 class="heading settled" data-level="8.3" id="rendering-effects"><span class="secno">8.3. </span><span class="content">Rendering effects</span><a class="self-link" href="#rendering-effects"></a></h3>
-   <p>The UA should take the chosen color scheme into account when rendering the default
-page background, form controls, the default selection color, and other UA-controlled
-UI like misspelling underlines.</p>
-   <p>When the canvas background is not opaque, a <a href="https://drafts.csswg.org/css-backgrounds/#special-backgrounds">UA dependent background</a> is seen behind the canvas. This background should be dark instead of light when the used color
-scheme for the root element of the top level document is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-dark" id="ref-for-valdef-supported-color-schemes-dark①">dark</a>.</p>
-   <p class="issue" id="issue-1d23e8a5"><a class="self-link" href="#issue-1d23e8a5"></a> Should the spec say white/black instead of light/dark? Probably not since this is defined as
-UA dependent?</p>
-   <p class="note" role="note"><span>Note:</span> The background color of the canvas is typically <a class="property" data-link-type="propdesc">transparent</a>. Changing the UA background
-behind the canvas allows for iframes to still be <span class="property">transparent</span> by default when both the parent
-document and the iframe uses a dark theme.</p>
-   <p>The UA stylesheet should include a named color, not exposed to authors, specified on :root. This
-named color computes to the same computed value as the initial value of <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#valdef-type-or-value-color" id="ref-for-valdef-type-or-value-color">color</a> when the resolved
-theme for the element is light, and <code>rgb(255, 255, 255)</code> for dark.</p>
-   <p class="issue" id="issue-db49e619"><a class="self-link" href="#issue-db49e619"></a> Making the computed value of a color relying on the used color theme could be an issue.</p>
-
+        <h2 class="heading settled" data-level="8" id="color-schemes"><span class="secno">8. </span><span class="content">UA rendering based on color schemes</span><a class="self-link" href="#color-schemes"></a></h2>
+        <p>A user agent may provide a user preferred color scheme which is the result of the user
+     selecting that scheme within the user agent itself, or based on the color scheme selected in
+     the UAs environment like an operating system. This preferred scheme is used to evaluate the <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme" id="ref-for-descdef-media-prefers-color-scheme">prefers-color-scheme</a> media feature. This specification introduces a <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes">supported-color-schemes</a> property to affect UA specific rendering on a per element basis.</p>
+        <p>The <a class="property" data-link-type="propdesc" href="https://drafts.csswg.org/mediaqueries-5/#descdef-media-prefers-color-scheme" id="ref-for-descdef-media-prefers-color-scheme①">prefers-color-scheme</a> media query is not affected by the used color scheme as that would
+     have introduced a circular dependency. Similarly, the used scheme does not result in a different
+     UA stylesheet, but the other computed or used values may.</p>
+        <p>How the UA decides upon the preferred color scheme is out of scope for this specification.</p>
+        <h3 class="heading settled" data-level="8.1" id="supported-color-schemes"><span class="secno">8.1. </span><span class="content">Switching color schemes: the <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes①">supported-color-schemes</a> property</span><a class="self-link" href="#supported-color-schemes"></a></h3>
+        <table class="def propdef" data-link-for-hint="supported-color-schemes">
+         <tbody>
+          <tr>
+           <th>Name:
+           <td><dfn class="dfn-paneled css" data-dfn-type="property" data-export id="propdef-supported-color-schemes">supported-color-schemes</dfn>
+          <tr class="value">
+           <th><a href="https://drafts.csswg.org/css-values/#value-defs">Value:</a>
+           <td class="prod"><a class="production css" data-link-type="type">&lt;color-scheme></a><a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#mult-one-plus" id="ref-for-mult-one-plus">+</a> only<a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#mult-opt" id="ref-for-mult-opt②">?</a>
+          <tr>
+           <th><a href="https://drafts.csswg.org/css-cascade/#initial-values">Initial:</a>
+           <td>light
+          <tr>
+           <th>Applies to:
+           <td><a href="https://drafts.csswg.org/css-pseudo/#generated-content" title="Includes ::before and ::after pseudo-elements.">all elements</a>
+          <tr>
+           <th><a href="https://drafts.csswg.org/css-cascade/#inherited-property">Inherited:</a>
+           <td>yes
+          <tr>
+           <th><a href="https://drafts.csswg.org/css-values/#percentages">Percentages:</a>
+           <td>N/A
+          <tr>
+           <th><a href="https://drafts.csswg.org/css-cascade/#computed">Computed value:</a>
+           <td>see prose
+          <tr>
+           <th>Canonical order:
+           <td>per grammar
+          <tr>
+           <th><a href="https://drafts.csswg.org/web-animations/#animation-type">Animation type:</a>
+           <td>not animatable
+        </table>
+        <p>If the specified value only contains unsupported color schemes, the computed value is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light">light</a>.
+     Otherwise, the computed value is the specified value with unsupported and duplicate color schemes removed.</p>
+        <p class="note" role="note"><span>Note:</span> The rationale behind specifying computed and used style (below) like this is to have to store
+     as little as possible (bitset of supported schemes) while not having to recreate computed
+     styles on preferred color scheme changes.</p>
+        <dl>
+         <dt><a class="production css" data-link-type="type">&lt;color-scheme></a>
+         <dd>
+     <pre class="prod"><dfn data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="color-scheme-value">&lt;color-scheme><a class="self-link" href="#color-scheme-value"></a></dfn> = <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light①">light</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑦">|</a> <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-dark" id="ref-for-valdef-supported-color-schemes-dark">dark</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one⑥⑧">|</a> <a class="production" data-link-type="type" href="https://drafts.csswg.org/css-values-4/#identifier-value" id="ref-for-identifier-value">&lt;custom-ident></a></pre>
+          <dl>
+           <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-light">light</dfn>
+           <dd>The element supports rendering with a light theme. 
+           <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-dark">dark</dfn>
+           <dd>The element supports rendering with a dark theme. 
+           <dt><a class="production css" data-link-type="type" href="https://drafts.csswg.org/css-values-4/#identifier-value" id="ref-for-identifier-value①">&lt;custom-ident></a>
+           <dd> Other color scheme names are allowed to be forward compatible with color schemes added later without
+                     dropping the declaration in UAs not supporting those themes. 
+          </dl>
+         <dt><dfn class="dfn-paneled css" data-dfn-for="supported-color-schemes" data-dfn-type="value" data-export id="valdef-supported-color-schemes-only">only</dfn> 
+         <dd>
+           Ask the UA to use one of the listed color schemes when the UA preferred color scheme is not listed
+             in the supported color schemes. This can typically be used force a dark theme rendering when the preferred
+             color scheme is light. 
+          <div class="example" id="example-db3ea83b">
+           <a class="self-link" href="#example-db3ea83b"></a> Force dark theming: 
+     <pre><code class="lang-css highlight"><c- f>:root </c-><c- p>{</c->
+       <c- k>supported-color-schemes</c-><c- p>:</c-> dark only<c- p>;</c->
+     <c- p>}</c->
+     </code></pre>
+          </div>
+        </dl>
+        <h3 class="heading settled" data-level="8.2" id="resolving-the-used-color-scheme"><span class="secno">8.2. </span><span class="content">Resolving the used color scheme</span><a class="self-link" href="#resolving-the-used-color-scheme"></a></h3>
+        <p>The UA provides a preferred color scheme which is used to evaluate the <span class="css">prefers-color-scheme</span> media feature. For the following, a preferred color scheme of <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/mediaqueries-5/#valdef-media-prefers-color-scheme-no-preference" id="ref-for-valdef-media-prefers-color-scheme-no-preference">no-preference</a> maps to <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light②">light</a>. The <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes②">supported-color-schemes</a> and the preferred color scheme resolves to a used color
+     scheme per element as follows:</p>
+        <ol>
+         <li> If the computed value of <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes③">supported-color-schemes</a> contains the preferred color
+             scheme, make that the used color scheme. 
+         <li>
+           If the computed value of <a class="property" data-link-type="propdesc" href="#propdef-supported-color-schemes" id="ref-for-propdef-supported-color-schemes④">supported-color-schemes</a> contains the <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-only" id="ref-for-valdef-supported-color-schemes-only">only</a> keyword,
+             make the first UA supported of the <span class="property" id="ref-for-propdef-supported-color-schemes⑤">supported-color-schemes</span>, per grammar order, the used color scheme. 
+          <p class="issue" id="issue-887a09c4"><a class="self-link" href="#issue-887a09c4"></a> Does it make sense to allow multiple color schemes before <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-only" id="ref-for-valdef-supported-color-schemes-only①">only</a>?</p>
+         <li> Otherwise the used color scheme is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-light" id="ref-for-valdef-supported-color-schemes-light③">light</a>. 
+        </ol>
+        <h3 class="heading settled" data-level="8.3" id="rendering-effects"><span class="secno">8.3. </span><span class="content">Rendering effects</span><a class="self-link" href="#rendering-effects"></a></h3>
+        <p>The UA should take the used color scheme into account when rendering the default
+     page background, form controls, the default selection color, and other UA-controlled
+     UI like misspelling underlines.</p>
+        <p>When the canvas background is not opaque, a <a href="https://drafts.csswg.org/css-backgrounds/#special-backgrounds">UA dependent background</a> is seen behind the canvas. This background should be dark instead of light when the used color
+     scheme for the root element of the top level document is <a class="css" data-link-type="maybe" href="#valdef-supported-color-schemes-dark" id="ref-for-valdef-supported-color-schemes-dark①">dark</a>.</p>
+        <p class="issue" id="issue-1d23e8a5"><a class="self-link" href="#issue-1d23e8a5"></a> Should the spec say white/black instead of light/dark? Probably not since this is defined as
+     UA dependent?</p>
+        <p class="note" role="note"><span>Note:</span> The background color of the canvas is typically <a class="property" data-link-type="propdesc">transparent</a>. Changing the UA background
+     behind the canvas allows for iframes to still be <span class="property">transparent</span> by default when both the parent
+     document and the iframe uses a dark theme.</p>
+        <p>The UA stylesheet should include a named color, not exposed to authors, specified on :root. This
+     named color computes to the same computed value as the initial value of <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-values-4/#valdef-type-or-value-color" id="ref-for-valdef-type-or-value-color">color</a> when the resolved
+     theme for the element is light, and <code>rgb(255, 255, 255)</code> for dark.</p>
+        <p class="issue" id="issue-db49e619"><a class="self-link" href="#issue-db49e619"></a> Making the computed value of a color relying on the used color theme could be an issue.</p>
