@@ -4,31 +4,31 @@
 <link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css>
 <body>
      <dt><dfn id=meta-supported-color-schemes><code>supported-color-schemes</code></dfn><dd>
-               <p>The value defines the default supported color schemes for the document and allow the UA to
-               know what backdrop color to draw early on to avoid white flash before rendering a dark themed
+               <p>The value defines the default supported color schemes for the document and allows the UA to
+               load a scheme-specific variant of the default UA stylesheet to avoid white flash before rendering a dark themed
                document. The value must be a <a href=#set-of-space-separated-tokens id=standard-metadata-names:set-of-space-separated-tokens>set of space-separated tokens</a>, each matching a
-               <span>&lt;color-scheme></span> production for the <span>
-               supported-color-schemes</span> CSS property, or an <a id=standard-metadata-names:ascii-case-insensitive-8 href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII case-insensitive</a> match
+               <code>&lt;color-scheme&gt;</code> production for the <code>supported-color-schemes</code> CSS property,
+               or an <a id=standard-metadata-names:ascii-case-insensitive-8 href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII case-insensitive</a> match
                for <code>only</code>.<p>
                
                <p class=XXX>Issue: This is based on the current Safari behavior, but
                     Safari also recognizes commas as separators. See <a href="https://bugs.webkit.org/show_bug.cgi?id=193931">WebKit issue</a>.</p>
                
-               <p>The user agent is expected to treat these tokens as a presentational hint setting the root element's
-               <span>supported-color-schemes</span> property to a space separated list as follows:</p>
+               <p>The UA is expected to treat these tokens as a presentational hint, setting the root element's
+               <code>supported-color-schemes</code> property to a space-separated list as follows:</p>
                
-               <ol><li>Add all tokens which match the <span>&lt;color-scheme></span> production.<li>If the list is still empty, add <code>light</code>.<li>
+               <ol><li>Add all tokens which match the <code>&lt;color-scheme&gt;</span> production.<li>If the list is still empty, add <code>light</code>.<li>
                     If the set of tokens contains an <a id=standard-metadata-names:ascii-case-insensitive-9 href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII case-insensitive</a> match for <code>only</code>,
                     add <code>only</code>.
                     </ol>
                
                <p>If a <code id=standard-metadata-names:the-meta-element-12><a href=#the-meta-element>meta</a></code> element is <a href=#insert-an-element-into-a-document id=standard-metadata-names:insert-an-element-into-a-document-2>inserted into the document</a>, or an existing <code id=standard-metadata-names:the-meta-element-13><a href=#the-meta-element>meta</a></code> element
-               <a id=standard-metadata-names:in-a-document-tree-2 href=https://dom.spec.whatwg.org/#in-a-document-tree data-x-internal=in-a-document-tree>in a document tree</a> have its <code id=standard-metadata-names:attr-meta-content-6><a href=#attr-meta-content>content</a></code>
+               <a id=standard-metadata-names:in-a-document-tree-2 href=https://dom.spec.whatwg.org/#in-a-document-tree data-x-internal=in-a-document-tree>in a document tree</a> has its <code id=standard-metadata-names:attr-meta-content-6><a href=#attr-meta-content>content</a></code>
                attribute changed, and the element has a <code id=standard-metadata-names:attr-meta-name-10><a href=#attr-meta-name>name</a></code>
                attribute whose value is an <a id=standard-metadata-names:ascii-case-insensitive-10 href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII case-insensitive</a> match for
                <code id=standard-metadata-names:meta-supported-color-schemes><a href=#meta-supported-color-schemes>supported-color-schemes</a></code>,
-               user agents must set the default supported color schemes for that element's <a id=standard-metadata-names:node-document-2 href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node
-               document</a> from the content attribute.</p>
+               UAs must set the default supported color schemes for that element's <a id=standard-metadata-names:node-document-2 href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node
+               document</a> from the <code id=standard-metadata-names:attr-meta-content-7><a href=#attr-meta-content>content</a></code> attribute.</p>
                
                <div class=example>
                     <p>This document only supports dark theming:</p>
