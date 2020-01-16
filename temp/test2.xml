@@ -1,0 +1,9 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+  <div class="a">Green</div>
+  <link rel="stylesheet" type="text/css" href="https://w3c-test.org/css/support/c-red.css?pipe=trickle(d2)" />
+  <div class="c">Red</div>
+</body>
+</html>
