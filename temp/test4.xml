@@ -1,0 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+  <div class="a">Green</div>
+  <div class="c">Red</div>
+  <link rel="stylesheet" type="text/css" href="https://w3c-test.org/css/support/c-red.css?pipe=trickle(d2)" />
+  <pre id="result">Script not run.</pre>
+  <script>
+    document.getElementById("result").firstChild.data = getComputedStyle(document.querySelector(".c")).color;
+  </script>
+</body>
+</html>
+
