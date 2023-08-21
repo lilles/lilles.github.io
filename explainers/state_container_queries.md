@@ -69,10 +69,31 @@ Introduce a container-type `sticky` to allow sticky positioned elements as
 query containers for querying whether the sticky positioned has an offset
 applied to fulfill the constraint for a given inset property. For instance:
 
-```css
-@container state(stuck: top) {
+```html
+<style>
+#sticky {
+  container-name: my-menu;
+  container-type: sticky;
+  position: sticky;
+  top: 0px;
+  height: 100px;
+}
+
+#sticky-child {
+  background-color: orange;
+  color: white;
+  height: 100%;
+}
+
+@container my-menu state(stuck: top) {
   #sticky-child { width: 50%; }
 }
+</style>
+<div id="sticky">
+  <div id="sticky-child">
+    Sticky
+  </div>
+</div>
 ```
 
 There is a question whether the query should match when the applied offset is
@@ -91,7 +112,11 @@ be queried for whether they are currently
 direction. For instance:
 
 ```css
-@container state(snapped: block) {}
+@container state(snapped: block) {
+  #snap-child {
+    outline 5px solid yellow;
+  }
+}
 ```
 
 ### Overflowing
