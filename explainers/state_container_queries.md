@@ -10,11 +10,11 @@ would make it simpler for authors to create effects on snapped elements, or
 have sticky positioned elements change their appearance when stuck.
 
 This article talks about the need for support for styling scroll-snapped
-elements: https://web.dev/state-of-css-2022/#scroll-snap-features-are-too-limited.
-In particular, see: https://web.dev/state-of-css-2022/#snap-target. This
+elements: [https://web.dev/state-of-css-2022/#scroll-snap-features-are-too-limited].
+In particular, see: [https://web.dev/state-of-css-2022/#snap-target]. This
 article also talks about the lack of being able to style snapped elements,
 using intersection observers as a javascript alternative:
-https://blog.logrocket.com/style-scroll-snap-points-css/.
+[https://blog.logrocket.com/style-scroll-snap-points-css/].
 
 These ideas have been explored before. For instance, see
 [this github issue](https://github.com/w3c/csswg-drafts/issues/5979), and
@@ -50,7 +50,7 @@ explicit container-type instead of implicitly deduce a size container from the
 introduce an explicit state property or deduce that an element is allowed to
 match based on another property. E.g. `:stuck` allowed for `position:sticky`.
 
-In the discussion in: https://github.com/w3c/csswg-drafts/issues/5979,
+In the discussion in: [https://github.com/w3c/csswg-drafts/issues/5979],
 container queries are brought up as an alternative to pseudo classes. That
 issue is also talking about containment, whether container queries should be
 used instead of pseudo classes, and the fact that the need for an extra loop
