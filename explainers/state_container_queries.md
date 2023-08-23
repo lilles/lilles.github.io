@@ -1,5 +1,12 @@
 # CSS State Container Queries Explainer
 
+## Introduction
+
+Level 3 of CSS Containment introduces Container Queries for querying size and
+style of containers to style their descendants depending on layout and computed
+styles respectively. There are requests to allow to query other states
+associated with a container, in particular various scroll based states.
+
 ## Background and Motivation
 
 Certain scroll-based states are only available for styling through javascript
@@ -34,7 +41,7 @@ There is an [open github issue](https://github.com/w3c/csswg-drafts/issues/6402)
 for state container queries where it was resolved to defer to the next level of
 the spec - presumably css-contain-4.
 
-## Container Queries
+## Container Queries vs Pseudo Classes
 
 Container queries are an alternative to using pseudo classes for these states.
 There are pros and cons of using new pseudo classes. Container queries would
