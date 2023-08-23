@@ -30,6 +30,10 @@ depending on this state (see
 [this comment](https://github.com/w3c/csswg-drafts/issues/5979#issuecomment-899765136)
 and onwards).
 
+There is an [open github issue](https://github.com/w3c/csswg-drafts/issues/6402)
+for state container queries where it was resolved to defer to the next level of
+the spec - presumably css-contain-4.
+
 ## Container Queries
 
 Container queries are an alternative to using pseudo classes for these states.
@@ -102,6 +106,15 @@ There is a question whether the query should match when the applied offset is
 still 0, but it is exactly aligned with the edge of where an offset would start
 to take effect.
 
+#### Use Cases and Author Requests
+
+- Demo that changes class through javascript based on the scrollTop value:
+  [Header (Logo pops in)](https://codepen.io/JGallardo/pen/ZEBbeP)
+- [Article using IntersectionObserver](https://davidwalsh.name/detect-sticky),
+  but stating there should ideally be a :stuck pseudo
+- [Using IntersectionObserver to fire custom sticky-change events](https://developer.chrome.com/blog/sticky-headers/)
+- [Another demo using IntersectionObserver](https://codepen.io/bhupendra1011/pen/GRKxWMM)
+
 #### Chrome Prototype Demo
 
 <video width="400px" src="sticky.mov" controls muted></video>
@@ -116,14 +129,24 @@ direction. For instance:
 ```css
 @container state(snapped: block) {
   #snap-child {
-    outline 5px solid yellow;
+    outline: 5px solid yellow;
   }
 }
 ```
 
+#### Use Cases and Author Requests
+
+In general being able to highlight the scroll snapped element, for instance in
+a carousel.
+
+- [Author request on github](https://github.com/w3c/csswg-drafts/issues/7430)
+
 ### Overflowing
 
-Query whether a container has scrollable overflow. To be explored.
+Query whether a container has scrollable overflow. Can be used to indicate
+there is content to scroll to in a given direction.
+
+Needs further exploration.
 
 ### Anchor position fallback
 
