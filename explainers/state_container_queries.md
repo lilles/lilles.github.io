@@ -1,3 +1,5 @@
+# [!This explainer has moved!](https://drafts.csswg.org/css-conditional-5/scroll_state_explainer.md)
+
 # CSS State Container Queries Explainer
 
 ## Introduction
